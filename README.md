@@ -29,8 +29,6 @@ Thus, automation ensures the project runs correctly _in any environment_.
 
 > ![Auto Reset](assets/AutoReset.png)
 
-You can drag images into this section after generating them from Wokwi.
-
 ---
 
 ## 🤖 How the System Works
