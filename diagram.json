@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "author": "Amrita",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp32",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -40,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "greenLed",
+      "top": 169.2,
+      "left": 147.8,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "redLed",
+      "top": 200,
+      "left": 230,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzz1",
+      "top": 200,
+      "left": 310,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [
+      "esp32:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp32:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "pir1:VCC",
+      "esp32:3V3",
+      "red",
+      []
+    ],
+    [
+      "pir1:GND",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "pir1:OUT",
+      "esp32:15",
+      "green",
+      []
+    ],
+    [
+      "greenLed:A",
+      "esp32:23",
+      "green",
+      []
+    ],
+    [
+      "greenLed:C",
+      "esp32:GND.2",
+      "black",
+      []
+    ],
+    [
+      "redLed:A",
+      "esp32:22",
+      "red",
+      []
+    ],
+    [
+      "redLed:C",
+      "esp32:GND.2",
+      "black",
+      []
+    ],
+    [
+      "buzz1:1",
+      "esp32:21",
+      "orange",
+      []
+    ],
+    [
+      "buzz1:2",
+      "esp32:GND.1",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
