@@ -50,6 +50,18 @@ void activateAlertMode() {
   Serial.println("🔴 Motion Detected! Alert Triggered!");
 }
 
+void activateDisarmedState() {
+  digitalWrite(GREEN_LED, LOW);
+  digitalWrite(RED_LED, LOW);
+  digitalWrite(BUZZER_PIN, LOW);
+
+  state.alarmActive = false;
+  state.statusText = "SYSTEM DISARMED";
+
+  Serial.println("🔕 System Disarmed — Monitoring Disabled");
+}
+
+
 // ==== Motion Checking ====
 void checkMotion() {
   int motion = digitalRead(PIR_PIN);
@@ -97,7 +109,7 @@ void callback_arm(CoapPacket &packet, IPAddress ip, int port) {
   }
   else if (payload == "OFF") {
     state.systemArmed = false;
-    activateMonitoringState();
+    activateDisarmedState();
     coap.sendResponse(ip, port, packet.messageid, "System Disarmed", 14,
                       COAP_CHANGED, COAP_TEXT_PLAIN,
                       packet.token, packet.tokenlen);
